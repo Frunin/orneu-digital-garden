@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/orneu/mito-da-criacao/ecos-da-criacao/","tags":["gardenEntry"]}
 ---
 
-
+# **Ecos da Criação**
 
 A história mais acreditada quanto a criação de Orneu (e o sistema solar de que faz parte) começa com o surgimento de duas entidades, chamados de Originários, seres feitos de pura energia vinda de um sistema ou universo diferente. 
 
