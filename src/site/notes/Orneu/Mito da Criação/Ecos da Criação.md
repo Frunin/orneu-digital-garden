@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/mito-da-criacao/ecos-da-criacao/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/orneu/mito-da-criacao/ecos-da-criacao/"}
 ---
 
 # **Ecos da Criação**
