@@ -9,6 +9,11 @@
     - [[Orneu/Mito da Criação/Ecos da Criação\|Ecos da Criação]]
     - [[Orneu/Mito da Criação/Panteão\|Panteão]]
     - [[Orneu/Mito da Criação/Infestos\|Infestos]]
+- # Itens
+	- ## Livros
+		- [[Orneu/Itens/Livros/Códice de Condensação Manual Integral para Aspirantes ao Batalhão de Engenheiros da Guarda Ferrovia Real\|Códice de Condensação Manual Integral para Aspirantes ao Batalhão de Engenheiros da Guarda Ferrovia Real]]
+	- ## Mágicos
+		- [[Orneu/Itens/Mágicos/A Relíquia\|A Relíquia]]
 - # Locais
 	- ## Nações
 		- [[Orneu/Localizações/Países/Leisafia/República Triarquica da Leisafia\|República Triarquica da Leisafia]]
