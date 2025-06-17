@@ -18,6 +18,6 @@
 		- [[Orneu/Localizações/Países/Mitzragia/Principado de Mitzragia\|Principado de Mitzragia]]
 		- [[Orneu/Localizações/Países/Hathers/Hathers\|Hathers]]
 - # Mapas
-	- 
+	- [[Orneu/Mapas/Orneu Hemisfério Norte\|Orneu Hemisfério Norte]]
 	- [[Orneu/Mapas/Hutepec Distritos\|Hutepec Distritos]]
 	- [[Orneu/Mapas/Hutepec Pontos de Interesse\|Hutepec Pontos de Interesse]]
