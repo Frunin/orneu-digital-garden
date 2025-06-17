@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/orneu/homepage/","tags":["gardenEntry"]}
 ---
 
-
+![test.png](/img/user/Orneu/Imagens/test.png)
  **Bem-vindo a Wiki do Mundo de Orneu!** (Em construção)
 
 - # Mito da Criação
