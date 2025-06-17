@@ -10,7 +10,7 @@ O Império Divino de Tawa é uma potência decadente, sustentada por mitos, medo
 ### **O Coro Dourado de Azarah**
 
 **Tipo:** Exército cerimonial e elite religiosa  
-**Descrição:** Cavaleiros-paladinos treinados para servir como [[Orneu/Grupos Notáveis/Império Divino de Tawa/Os Guardiões das Sombras/Os Guardiões das Sombras\|guardiões]] de locais sagrados e de membros da família imperial. Usam armaduras de cobre encantado e entoam cânticos enquanto marcham.  
+**Descrição:** Cavaleiros-paladinos treinados para servir como [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Os Guardiões das Sombras\|guardiões]] de locais sagrados e de membros da família imperial. Usam armaduras de cobre encantado e entoam cânticos enquanto marcham.  
 **Presença em [[Orneu/Localizações/Países/Tawa/Siyah/Siyah\|Siyah]]:** **Não permanentemente.** Apenas em momentos de grande cerimônia ou crise. Uma **ala de recepção cerimonial** existe na cidade para o caso de sua chegada.
 
 ## **[[Orneu/Grupos Notáveis/Império Divino de Tawa/Pessoas/O Imperador do Eco Partido\|O Imperador do Eco Partido]]**

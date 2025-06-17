@@ -39,7 +39,7 @@
 > 
 > _Fragmento do tratado “Vigilância sobre os Mitos da Coroa dos [[Orneu/Mito da Criação/Panteão\|Deuses]]”_
 > 
-> “O poema é indiscutivelmente uma peça litúrgica de período tardio da dinastia Telariana. Suas estrofes ecoam estruturas do Antigo Cântico dos Sete [[Orneu/Grupos Notáveis/Império Divino de Tawa/Os Guardiões das Sombras/Os Guardiões das Sombras\|Guardiões]], mas com distorções significativas. A dita ‘Relíquia’ não é um artefato real, mas um símbolo metafísico da unificação dos Sete Ofícios da Soberania. As armaduras descritas são arquétipos de virtudes governantes — e não há evidência de que alguma peça sequer exista. Considerá-la literal é alimentar o fanatismo de cultos milenaristas.”
+> “O poema é indiscutivelmente uma peça litúrgica de período tardio da dinastia Telariana. Suas estrofes ecoam estruturas do Antigo Cântico dos Sete [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Os Guardiões das Sombras\|Guardiões]], mas com distorções significativas. A dita ‘Relíquia’ não é um artefato real, mas um símbolo metafísico da unificação dos Sete Ofícios da Soberania. As armaduras descritas são arquétipos de virtudes governantes — e não há evidência de que alguma peça sequer exista. Considerá-la literal é alimentar o fanatismo de cultos milenaristas.”
 
 
 > [!NOTE] **Elaren da Casa Y’shi de Bamberg**, Historiadora de Campo

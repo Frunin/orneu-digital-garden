@@ -26,3 +26,6 @@
 	- [[Orneu/Mapas/Orneu Hemisfério Norte\|Orneu Hemisfério Norte]]
 	- [[Orneu/Mapas/Hutepec Distritos\|Hutepec Distritos]]
 	- [[Orneu/Mapas/Hutepec Pontos de Interesse\|Hutepec Pontos de Interesse]]
+- # Grupos
+	- ## Os Guardiões das Sombras
+		- [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Lyria Nyx\|Lyria Nyx]]
