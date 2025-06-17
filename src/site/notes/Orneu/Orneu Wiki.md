@@ -3,7 +3,7 @@
 ---
 
 ![test.png](/img/user/Orneu/Imagens/test.png)
- **Bem-vindo a Wiki do Mundo de Orneu!** (Em construção)
+ **Bem-vindo a Wiki do Mundo de Orneu!** 
 
 - # Mito da Criação
     - [[Orneu/Mito da Criação/Ecos da Criação\|Ecos da Criação]]
