@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/itens/livros/codice-de-condensacao-manual-integral-para-aspirantes-ao-batalhao-de-engenheiros-da-guarda-ferrovia-real/"}
+{"dg-publish":true,"permalink":"/orneu/itens/livros/codice-de-condensacao-manual-integral-para-aspirantes-ao-batalhao-de-engenheiros-da-guarda-ferrovia-real/","tags":["itens"]}
 ---
 
 

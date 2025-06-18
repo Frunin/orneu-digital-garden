@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/itens/magicos/a-reliquia/","tags":["itens_mágicos","Storypoints","publish"]}
+{"dg-publish":true,"permalink":"/orneu/itens/magicos/a-reliquia/","tags":["itens_mágicos","Storypoints","itens"]}
 ---
 
 

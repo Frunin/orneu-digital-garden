@@ -10,7 +10,7 @@ O **Império Nizakino**, localizado no continente de Benal, é um país de extre
 
 O Império é moldado por sua geografia inóspita. A **Cordilheira do [[Orneu/Localizações/Pontos de Interesse/Monte Chipington\|Monte Chipington]]** ao sul marca a divisa com o [[Orneu/Localizações/Países/Khishilia/Reino de Khishilia\|Reino de Khishilia]], uma barreira natural de gelo e pedra que protege o Império de invasões, mas também o isola. Ao norte, o gelo absoluto reina – uma terra sem nome e sem dono.
 
-**[[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce\|Riacho Doce]]**, a capital, se encontra 30 km da costa oeste, à beira de um rio largo e profundo que deságua no oceano. A cidade combina arquitetura robusta em pedra clara com pontes arqueadas e cúpulas aquecidas magicamente. É um centro político e espiritual, cercado por florestas encantadas e campos de neblina persistente.
+**[[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce ★\|Riacho Doce ★]]**, a capital, se encontra 30 km da costa oeste, à beira de um rio largo e profundo que deságua no oceano. A cidade combina arquitetura robusta em pedra clara com pontes arqueadas e cúpulas aquecidas magicamente. É um centro político e espiritual, cercado por florestas encantadas e campos de neblina persistente.
 
 ### **Harmonia com o Ambiente**
 
@@ -33,7 +33,7 @@ A economia nizakina é baseada em **recursos naturais mágicos e rituais de perm
 - **Peles encantadas**, oriundas de animais que migraram para regiões mágicas e incorporaram propriedades sobrenaturais.
 - **Mel de inverno**, um produto raro feito por abelhas adaptadas à tundra que polinizam líquens mágicos — com propriedades restaurativas.
 
-Internamente, a economia é sustentada por **sistemas de cooperativas** e conselhos comunais. [[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce\|Riacho Doce]] funciona como um centro de redistribuição, onde mercadores e sacerdotes supervisionam a circulação de bens e energia espiritual.
+Internamente, a economia é sustentada por **sistemas de cooperativas** e conselhos comunais. [[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce ★\|Riacho Doce ★]] funciona como um centro de redistribuição, onde mercadores e sacerdotes supervisionam a circulação de bens e energia espiritual.
 
 ### **Magia e Fauna — Influência dos [[Orneu/Mito da Criação/Ecos da Criação\|Ecos da Criação]]**
 
@@ -55,7 +55,7 @@ Esses momentos criam **refúgios de calor e alegria** em meio à paisagem gelada
 
 O atual Imperador, **Eryon Velyn III**, é uma figura carismática e presente, conhecido por realizar **Audiências das Quatro Vozes** — reuniões públicas sazonais nas quais cidadãos comuns podem fazer petições diretamente, desde que saibam cantar sua causa em verso. Ele é cercado por **Acordistas**, conselheiros bardos-sábios que o ajudam a interpretar os ecos políticos e espirituais do Império.
 
-Sua autoridade é reforçada por **ritos públicos**: o Imperador caminha sozinho pelas ruas de [[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce\|Riacho Doce]] uma vez por mês, sem guarda visível, como forma de demonstrar sua fé no povo. Um atentado contra ele é considerado não apenas traição, mas **blasfêmia contra a harmonia universal**.
+Sua autoridade é reforçada por **ritos públicos**: o Imperador caminha sozinho pelas ruas de [[Orneu/Localizações/Países/Nizakia/Riacho Doce/Riacho Doce ★\|Riacho Doce ★]] uma vez por mês, sem guarda visível, como forma de demonstrar sua fé no povo. Um atentado contra ele é considerado não apenas traição, mas **blasfêmia contra a harmonia universal**.
 
 
 
