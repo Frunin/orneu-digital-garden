@@ -1,3 +1,7 @@
+{% import "components/filetree.njk" as FileTree %}
+{% set items = filetree or (dynamics?.filetree?.filetree) %}
+
+
 <style>
   .front-index {
     display: flex;
@@ -8,31 +12,19 @@
     flex: 1 1 45%;
     max-width: 48%;
   }
-  .notelink .filename {
-    display: inline-block;
-    margin-left: 1.25rem;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .foldername-wrapper {
-    cursor: pointer;
-    user-select: none;
-    margin: 0.5rem 0;
-  }
 </style>
 
 <div class="front-index">
   <nav>
-    {% for fileOrFolderName, fileOrFolder in filetree %}
-      {{ menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName) }}
+    {% set keys = items | dictsort %}
+    {% set half = (keys | length / 2) | round(0, 'ceil') %}
+    {% for key, node in keys[0:half] %}
+      {{ FileTree.menuItem(key, node, 0, key) }}
     {% endfor %}
   </nav>
   <nav>
-    {{!-- We need to split filetree into two halves --}}
-    {% set items = filetree|list %}
-    {% set half = (items|length / 2)|round(0, 'ceil') %}
-    {% for key in items[half:] %}
-      {{ menuItem(key, filetree[key], 0, key) }}
+    {% for key, node in keys[half:] %}
+      {{ FileTree.menuItem(key, node, 0, key) }}
     {% endfor %}
   </nav>
 </div>
