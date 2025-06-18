@@ -1,5 +1,5 @@
-{% import "components/filetree.njk" as FileTree %}
-{% set items = filetree or (dynamics?.filetree?.filetree) %}
+{% set items = filetree %}
+<pre>{{ items | dump }}</pre>
 
 <pre>{{ items | dump }}</pre>
 
