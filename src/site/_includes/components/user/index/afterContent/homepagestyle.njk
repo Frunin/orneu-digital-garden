@@ -1,15 +1,13 @@
 {% import "components/filetree.njk" as FileTree %}
 
 <style>
-  .front-index {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-  .front-index > nav {
-    flex: 1 1 45%;
-    max-width: 48%;
-  }
+.front-index {
+  display: block !important;
+}
+.front-index > nav {
+  max-width: 100% !important;
+  flex: none !important;
+}
 </style>
 
 <div class="front-index">
