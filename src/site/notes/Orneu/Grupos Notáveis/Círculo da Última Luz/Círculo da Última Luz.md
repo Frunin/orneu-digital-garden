@@ -18,7 +18,7 @@
 O **Círculo da Última Luz** é uma **rede descentralizada de células rebeldes** formada por aqueles que percebem que **o retorno da [[Orneu/Itens/Mágicos/A Relíquia\|Relíquia]] de [[Orneu/Localizações/Países/Tawa/Império Divino de Tawa\|Tawa]] nas mãos do [[Orneu/Grupos Notáveis/Paradoxo Austero/Paradoxo Austero\|Paradoxo]] Austero representa não apenas uma ameaça política — mas um colapso metafísico da liberdade, do esquecimento e do direito de permanecer mortal.**
 
 
-:::hidden
+::: hidden
 Suas células atuam como **fagulhas conscientes em regiões distintas de Orneu**, buscando preservar o equilíbrio entre as culturas locais, impedir o domínio da Verdade Única proposta por [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Urihice Sagecloud\|Urihice Sagecloud]], e proteger (ou ocultar) fragmentos da [[Orneu/Itens/Mágicos/A Relíquia\|Relíquia]] antes que sejam reunidos. (Nota:Os membros da rebelião ainda não sabem que o plano é proposto por Urihice).
 
 ## **Estrutura e Operação**

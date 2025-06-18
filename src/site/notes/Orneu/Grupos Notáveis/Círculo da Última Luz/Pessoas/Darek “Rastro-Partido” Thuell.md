@@ -24,7 +24,7 @@ Um **olho cego de nascença** brilha em azul pálido sob a sombra de sua sobranc
 - Trata cada cruzamento de fronteira como um **rito espiritual**, e exige que viajantes deixem algo para trás — um objeto, uma memória escrita, ou uma mentira confessada.
 - Acredita que **a fronteira é um ser vivo**, e que “quem passa sem pagar, é cobrado depois”.
 
-:::hidden
+::: hidden
 
 ### Habilidades e conhecimento:
 

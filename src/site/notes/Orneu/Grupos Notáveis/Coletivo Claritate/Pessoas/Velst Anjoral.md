@@ -4,7 +4,7 @@
 
 
 ![Velst Anjoral.jpeg](/img/user/Orneu/Imagens/Velst%20Anjoral.jpeg)
-:::hidden
+::: hidden
 ### **Backstory**
 
 A primeira coisa que muitos notam em Velst não é sua presença — é sua ausência de pressa. Em uma cidade onde o vapor governa o tempo e o ruído comanda o medo, ela caminha como se tivesse escutado o que precisava antes de todos. E talvez tenha mesmo.

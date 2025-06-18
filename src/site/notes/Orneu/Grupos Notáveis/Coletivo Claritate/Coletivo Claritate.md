@@ -8,16 +8,17 @@
 Líder: ???
 
 Sede: ???
-:::hidden
+::: hidden
 
 Líder: [[Orneu/Grupos Notáveis/Coletivo Claritate/Pessoas/Andabell Vharlar\|Andabell Vharlar]]
 
 Sede: Supostamente em [[Orneu/Localizações/Países/Territórios Neutros/Pelovis\|Pelovis]], mas com bibliotecas em todas as cidades médias à grandes do mundo.
+
 :::
 
 Financiados de forma anônima, o Coletivo é um grupo de arquivistas de diversas origens, profissões e áreas de interesse, determinados a coletar o máximo de informações possíveis sobre o mundo, independente da forma e validade dessas. Seus membros realizam entrevistas, investigações, coletam livros, poemas, contos, histórias, passagens orais e os categorizam e arquivados na biblioteca mais próxima. 
 
-:::hidden
+::: hidden
 Enquanto os originais são armazenados, uma cópia é enviada para o Armazém em [[Orneu/Localizações/Países/Territórios Neutros/Pelovis\|Pelovis]]. 
 
 O que a maioria dos que conhecem o Coletivo e utilizam suas bibliotecas não conhecem, é o braço do Coletivo conhecido apenas como Bellum. Os membros do Bellum buscam lutar contra a corrupção e abuso de poder ao redor do mundo.
