@@ -1,6 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/orneu-wiki/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/orneu/orneu-wiki/","pinned":true,"tags":["gardenEntry"]}
 ---
+
 
 ![test.png](/img/user/Orneu/Imagens/test.png)
  **Bem-vindo a Wiki do Mundo de Orneu!** 
@@ -29,3 +30,13 @@
 - # Grupos
 	- ## Os Guardiões das Sombras
 		- [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Lyria Nyx\|Lyria Nyx]]
+	- ## [[Orneu/Grupos Notáveis/Círculo da Última Luz/Círculo da Última Luz\|Círculo da Última Luz]]
+		- [[Orneu/Grupos Notáveis/Os Guardiões das Sombras/Lyria Nyx\|Lyria Nyx]]
+		- [[Orneu/Grupos Notáveis/Círculo da Última Luz/Pessoas/Darek “Rastro-Partido” Thuell\|Darek “Rastro-Partido” Thuell]]
+	- ## [[Orneu/Grupos Notáveis/Coletivo Claritate/Coletivo Claritate\|Coletivo Claritate]]
+		- [[Orneu/Grupos Notáveis/Coletivo Claritate/Pessoas/Velst Anjoral\|Velst Anjoral]]
+	- ## [[Orneu/Grupos Notáveis/Paradoxo Austero/Paradoxo Austero\|Paradoxo Austero]]
+
+
+
+
