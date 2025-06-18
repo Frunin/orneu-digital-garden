@@ -4,13 +4,13 @@
       <a href="{{ node.permalink }}">{{ node.name }}</a>
     </div>
   {% elif node.isFolder %}
-    <div class="folder-item folder-{{ name | lower | replace(' ', '-') }}" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
-      <div @click="open = !open" style="cursor:pointer; user-select:none; display: flex; align-items: center;">
-        <span class="folder-icon"></span>
+    <div class="folder-item folder-{{ name | lower | replace(' ', '-') }}" x-data="{ open: false }">
+      <div @click="open = !open" class="folder-header">
+        <div class="folder-icon"></div>
         <span x-text="open ? '▼' : '▶'"></span>
-        <span style="margin-left: 0.5rem;">{{ name }}</span>
+        <span class="folder-title">{{ name }}</span>
       </div>
-      <div x-show="open" style="margin-left: 1rem;">
+      <div x-show="open" class="folder-children">
         {% for childName, childNode in node %}
           {% if childName not in ['isNote', 'isFolder', 'hide', 'name', 'permalink', 'noteIcon', 'pinned'] %}
             {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
@@ -21,51 +21,78 @@
   {% endif %}
 {% endmacro %}
 
-<div x-data>
+<div x-data class="folder-grid">
   {% for key, node in filetree.Orneu %}
     {{ menuItem(key, node) }}
   {% endfor %}
 </div>
 
 <style>
+  .folder-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
   .note-item a {
     text-decoration: none;
   }
 
   .folder-item {
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #f8f8f8;
+  }
+
+  .folder-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
   }
 
   .folder-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
-  /* Folder-specific SVG icons as background images */
+  .folder-title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .folder-children {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  /* Folder-specific icons from URLs */
 
   .folder-grupos-notáveis .folder-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm3.124 1.5h-.427a6.5 6.5 0 0 1-5.394 0h-.427A5.876 5.876 0 0 0 3 19.376a.624.624 0 0 0 .624.624h16.752a.624.624 0 0 0 .624-.624A5.876 5.876 0 0 0 15.124 13.5Z'/></svg>");
+    background-image: url('https://www.svgrepo.com/show/501214/group.svg');
   }
 
   .folder-itens .folder-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M21.707 20.293 18.6 17.186a7.932 7.932 0 0 0 1.4-4.486C20 8.262 16.738 5 12.7 5S5.4 8.262 5.4 12.7 8.662 20.4 12.7 20.4a7.932 7.932 0 0 0 4.486-1.4l3.107 3.107a1 1 0 0 0 1.414-1.414ZM12.7 18.4a5.7 5.7 0 1 1 0-11.4 5.7 5.7 0 0 1 0 11.4Z'/></svg>");
+    background-image: url('https://www.svgrepo.com/show/440552/item-storage-search.svg');
   }
 
   .folder-localizações .folder-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2a10 10 0 1 0 10 10A10.013 10.013 0 0 0 12 2Zm8 10a8.078 8.078 0 0 1-.686 3.253l-1.723-1.58a1.5 1.5 0 0 0-1.2-.396L12.646 14.1l.188-2.255a.5.5 0 0 0-.615-.52l-3.483.83-1.078-1.394a.5.5 0 0 0-.886.325l-.027 2.626-1.952.482a7.975 7.975 0 0 1-.223-5.193l2.451.545a.5.5 0 0 0 .6-.4l.503-2.67 2.85-.57.83 2.491a.5.5 0 0 0 .939.036L13.3 4.285A8.033 8.033 0 0 1 20 12Z'/></svg>");
+    background-image: url('https://www.svgrepo.com/show/438256/world-round.svg');
   }
 
   .folder-mapas .folder-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.5 2.02a.97.97 0 0 0-.57.15L15 4.83 9 2.02 3.57 4.78a1 1 0 0 0-.57.9v16.3a1 1 0 0 0 1.43.9L9 20.17l6 2.81 5.43-2.76a1 1 0 0 0 .57-.9V3a1 1 0 0 0-.5-.98ZM15 20.17l-6-2.81V3.83l6 2.8Z'/></svg>");
+    background-image: url('https://www.svgrepo.com/show/535491/map.svg');
   }
 
   .folder-mito-da-criação .folder-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 3a1 1 0 0 0-1 1v6a4 4 0 0 0 3 3.87V21a1 1 0 0 0 2 0v-7.13a4 4 0 0 0 3-3.87V4a1 1 0 0 0-2 0v6a2 2 0 0 1-4 0V4a1 1 0 0 0-1-1Z'/></svg>");
+    background-image: url('https://www.svgrepo.com/show/480272/harp-3.svg');
   }
 </style>
 
