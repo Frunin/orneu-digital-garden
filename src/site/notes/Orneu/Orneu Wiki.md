@@ -3,7 +3,7 @@
 ---
 
 
-![test.png](/img/user/Orneu/Imagens/test.png)
+![test.png|center|500](/img/user/Orneu/Imagens/test.png)
 
 
 
