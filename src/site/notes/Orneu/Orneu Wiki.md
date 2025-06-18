@@ -4,7 +4,7 @@
 
 
 ![test.png](/img/user/Orneu/Imagens/test.png)
- **Bem-vindo a Wiki do Mundo de Orneu!** 
+
 
 
 
