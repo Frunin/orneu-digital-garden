@@ -1,15 +1,33 @@
-{% from "components/filetree.njk" import menuItem %}
+{% macro menuItem(name, node, step = 0, currentPath = "") %}
+  {% if node.isNote and not node.hide %}
+    <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
+      <a href="{{ node.permalink }}">{{ node.name }}</a>
+    </div>
+  {% elif node.isFolder %}
+    <div class="folder-item" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
+      <div @click="open = !open" style="cursor:pointer; user-select:none;">
+        <span x-text="open ? '▼' : '▶'"></span> {{ name }}
+      </div>
+      <div x-show="open" style="margin-left: 1rem;">
+        {% for childName, childNode in node %}
+          {% if childName not in ['isNote', 'isFolder', 'hide', 'name', 'permalink', 'noteIcon', 'pinned'] %}
+            {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}
 
 <div x-data>
   <div class="filetree-multicolumn">
     {% for key, node in filetree.Orneu %}
-      {{ menuItem(key, node, 0, key) }}
+      {{ menuItem(key, node) }}
     {% endfor %}
   </div>
 </div>
 
 <style>
-  /* Multi-column container: 3 columns with gap */
   .filetree-multicolumn {
     max-width: 1200px;
     margin: 0 auto;
@@ -17,27 +35,18 @@
     column-gap: 2rem;
   }
 
-  /* Basic spacing for folder and note items */
-  .folder.inner-folder {
+  .folder-item {
     margin-bottom: 0.25rem;
   }
 
-  .notelink {
-    margin-left: 1.5rem;
+  .note-item {
     margin-bottom: 0.25rem;
   }
 
-  /* Keep link styling clean */
-  .notelink a.filename {
+  .note-item a {
     text-decoration: none;
     color: inherit;
   }
-  
-  /* Chevron icons alignment */
-  .foldername-wrapper {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
 </style>
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
