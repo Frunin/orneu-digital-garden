@@ -1,30 +1,15 @@
 {% import "components/filetree.njk" as FileTree %}
 
-{% set items = filetree %}
+<h2>Debugging filetree on homepage</h2>
 
-<style>
-  .front-index {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-  .front-index > nav {
-    flex: 1 1 45%;
-    max-width: 48%;
-  }
-</style>
+<pre>{{ filetree | dump }}</pre>
 
-<div class="front-index">
-  <nav>
-    {% set keys = items | dictsort %}
-    {% set half = (keys | length / 2) | round(0, 'ceil') %}
-    {% for key, node in keys[0:half] %}
+{% if filetree %}
+  <div>
+    {% for key, node in filetree | dictsort %}
       {{ FileTree.menuItem(key, node, 0, key) }}
     {% endfor %}
-  </nav>
-  <nav>
-    {% for key, node in keys[half:] %}
-      {{ FileTree.menuItem(key, node, 0, key) }}
-    {% endfor %}
-  </nav>
-</div>
+  </div>
+{% else %}
+  <p>No filetree data found.</p>
+{% endif %}
