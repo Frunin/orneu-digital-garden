@@ -1,69 +1,29 @@
-{# homepagestyle.njk #}
+<h2>Filetree Raw Data</h2>
+<pre>{{ filetree | safe | dump(4) }}</pre>
 
-{% macro menuItemOpenAll(name, item, step) %}
-  <div style="margin-left: {{ step * 1.5 }}rem; margin-bottom: 0.3rem;">
-    {% if item.isFolder %}
-      <div><strong>{{ name }}</strong></div>
-      {% for childName, child in item %}
-        {# Skip metadata keys #}
-        {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
-          {{ menuItemOpenAll(childName, child, step + 1) }}
-        {% endif %}
-      {% endfor %}
-    {% elif item.isNote %}
-      <div>
-        <a href="{{ item.permalink }}">{{ item.name }}</a>
-      </div>
-    {% else %}
-      {# In case there are unexpected structures, just show the name #}
-      <div>{{ name }}</div>
-    {% endif %}
-  </div>
-{% endmacro %}
-
-<style>
-  .front-index {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-  .front-index > nav {
-    flex: 1 1 45%;
-    max-width: 48%;
-    min-width: 300px;
-    overflow-wrap: anywhere;
-  }
-  .foldername-wrapper {
-    display: flex;
-    align-items: center;
-  }
-  .foldername-wrapper span:first-child {
-    font-size: 0.75rem;
-    user-select: none;
-  }
-  .notelink a:hover {
-    text-decoration: underline;
-    color: #0366d6;
-  }
-</style>
-
-<h2>File Tree Index</h2>
-
-<div class="front-index" x-data>
+<h2>Filetree Simple List</h2>
+<ul>
   {% if filetree and filetree.Orneu %}
-    {% set keys = filetree.Orneu | dictsort %}
-    {% set half = (keys | length / 2) | round(0, 'ceil') %}
-    <nav>
-      {% for key, node in keys[0:half] %}
-        {{ menuItem(key, node, 0, key) }}
-      {% endfor %}
-    </nav>
-    <nav>
-      {% for key, node in keys[half:] %}
-        {{ menuItem(key, node, 0, key) }}
-      {% endfor %}
-    </nav>
+    {% for key, node in filetree.Orneu %}
+      <li>
+        {{ key }} - 
+        {% if node.isNote %}
+          Note: <a href="{{ node.permalink }}">{{ node.name }}</a>
+        {% elif node.isFolder %}
+          Folder
+          <ul>
+            {% for childName, childNode in node %}
+              {% if childName not in ['isNote', 'isFolder'] %}
+                <li>{{ childName }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% else %}
+          Unknown type
+        {% endif %}
+      </li>
+    {% endfor %}
   {% else %}
-    <p>No filetree data found.</p>
+    <li>No filetree.Orneu data found</li>
   {% endif %}
-</div>
+</ul>
