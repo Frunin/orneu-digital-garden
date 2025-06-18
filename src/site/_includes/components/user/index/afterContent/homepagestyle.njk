@@ -3,44 +3,32 @@ title: Home
 layout: base.njk
 ---
 
-<h1>Homepage - Alpine.js Check</h1>
+<h1>Homepage test</h1>
 
-<!-- Simple Alpine.js test -->
-<div x-data="{ count: 0 }" class="alpine-test" style="margin-bottom: 1rem;">
+<div x-data="{ count: 0 }">
   <button @click="count++">Click me</button>
   <span>Count: <span x-text="count"></span></span>
 </div>
 
-<!-- Wrap your filetree in a div with Alpine forced open -->
 <div x-data="{ isOpen: true }" style="border: 1px solid #ccc; padding: 1rem;">
-  {% from "macros/filetree.njk" import menuItem %}
-  {% set fileTree = fileTreeData.Orneu %}
-  
-  <!-- Render the root folder, forcing all nested folders open by overriding macro call -->
-  {% macro menuItemOpenAll(name, item, step, currentPath) %}
-    {% if item.isNote or item.isFolder %}
-      <div x-show="true" class="{{ 'filelist' if step > 0 }}">
-        {% if item.isNote and not item.hide %}
-          <div class="notelink">
-            <a href="{{ item.permalink }}">{{ item.name }}</a>
-          </div>
-        {% elif item.isFolder %}
-          <div class="folder inner-folder" x-data="{isOpen: true}" @click.stop="isOpen=!isOpen">
-            <div class="foldername-wrapper align-icon">
-              <i x-show="true" icon-name="chevron-down"></i>
-              <span class="foldername">{{ name }}</span>
-            </div>
-            {% for childName, child in item | dictsort %}
-              {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
-                {{ menuItemOpenAll(childName, child, step + 1, currentPath ~ "/" ~ childName) }}
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
+  {% macro menuItemOpenAll(name, item, step) %}
+    <div>
+      <div><strong>{{ name }}</strong></div>
+      {% if item.isFolder %}
+        <div style="margin-left: 1rem;">
+          {% for childName, child in item %}
+            {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
+              {{ menuItemOpenAll(childName, child, step + 1) }}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elif item.isNote %}
+        <div style="margin-left: 1rem;">
+          <a href="{{ item.permalink }}">{{ item.name }}</a>
+        </div>
+      {% endif %}
+    </div>
   {% endmacro %}
 
-  {{ menuItemOpenAll("Orneu", fileTree, 0, "Orneu") }}
+  {{ menuItemOpenAll("Orneu", fileTreeData.Orneu, 0) }}
 </div>
-
