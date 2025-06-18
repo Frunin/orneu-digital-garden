@@ -1,42 +1,79 @@
 {# homepagestyle.njk #}
 
-{% macro menuItemOpenAll(name, item, step) %}
-  <div style="margin-left: {{ step * 1.5 }}rem; margin-bottom: 0.3rem;">
-    {% if item.isFolder %}
-      <div><strong>{{ name }}</strong></div>
-      {% for childName, child in item %}
-        {# Skip metadata keys #}
-        {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
-          {{ menuItemOpenAll(childName, child, step + 1) }}
-        {% endif %}
-      {% endfor %}
-    {% elif item.isNote %}
-      <div>
-        <a href="{{ item.permalink }}">{{ item.name }}</a>
-      </div>
-    {% else %}
-      {# In case there are unexpected structures, just show the name #}
-      <div>{{ name }}</div>
-    {% endif %}
-  </div>
+{% macro menuItem(fileOrFolderName, fileOrFolder, step, currentPath) %}
+  {% if fileOrFolder.isNote or fileOrFolder.isFolder %}
+    <div x-data="{ isOpen: step === 0 ? true : false }" style="margin-left: {{ step * 1.2 }}rem; margin-bottom: 0.4rem;">
+      {% if fileOrFolder.isFolder %}
+        <div 
+          class="foldername-wrapper align-icon" 
+          @click.stop="isOpen = !isOpen" 
+          style="cursor: pointer; font-weight: bold; user-select: none;"
+          >
+          <span x-show="isOpen" style="display:none;">▼</span>
+          <span x-show="!isOpen">▶</span>
+          <span class="foldername" style="margin-left: 0.3rem;">{{ fileOrFolderName }}</span>
+        </div>
+        <div x-show="isOpen" style="margin-top: 0.3rem;" x-cloak>
+          {% for childName, childNode in fileOrFolder %}
+            {% if childName not in ['isNote', 'isFolder', 'permalink', 'name', 'noteIcon', 'hide', 'pinned'] %}
+              {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elif fileOrFolder.isNote and not fileOrFolder.hide %}
+        <div class="notelink" style="margin-left: 1.5rem;">
+          <a href="{{ fileOrFolder.permalink }}" style="text-decoration: none; color: inherit;">
+            {{ fileOrFolder.name }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
 {% endmacro %}
 
 <style>
-  /* Simple styling for clarity */
-  a {
-    text-decoration: none;
-    color: #0366d6;
+  .front-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
-  a:hover {
+  .front-index > nav {
+    flex: 1 1 45%;
+    max-width: 48%;
+    min-width: 300px;
+    overflow-wrap: anywhere;
+  }
+  .foldername-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .foldername-wrapper span:first-child {
+    font-size: 0.75rem;
+    user-select: none;
+  }
+  .notelink a:hover {
     text-decoration: underline;
+    color: #0366d6;
   }
 </style>
 
 <h2>File Tree Index</h2>
 
-{# Check the root node "Orneu" exists #}
-{% if filetree and filetree.Orneu %}
-  {{ menuItemOpenAll("Orneu", filetree.Orneu, 0) }}
-{% else %}
-  <p>No filetree data found.</p>
-{% endif %}
+<div class="front-index" x-data>
+  {% if filetree and filetree.Orneu %}
+    {% set keys = filetree.Orneu | dictsort %}
+    {% set half = (keys | length / 2) | round(0, 'ceil') %}
+    <nav>
+      {% for key, node in keys[0:half] %}
+        {{ menuItem(key, node, 0, key) }}
+      {% endfor %}
+    </nav>
+    <nav>
+      {% for key, node in keys[half:] %}
+        {{ menuItem(key, node, 0, key) }}
+      {% endfor %}
+    </nav>
+  {% else %}
+    <p>No filetree data found.</p>
+  {% endif %}
+</div>
