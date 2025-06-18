@@ -1,97 +1,38 @@
 <style>
-  .columns {
+  .front-index {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 2rem;
   }
-
-  .column {
+  .front-index > nav {
     flex: 1 1 45%;
     max-width: 48%;
   }
-
-  details {
-    margin-bottom: 0.8em;
-    border-left: 3px solid #ccc;
-    padding-left: 0.8em;
+  .notelink .filename {
+    display: inline-block;
+    margin-left: 1.25rem;
+    text-decoration: none;
+    color: var(--text);
   }
-
-  summary {
-    font-weight: bold;
+  .foldername-wrapper {
     cursor: pointer;
-  }
-
-  ul {
-    list-style-type: none;
-    padding-left: 1em;
-  }
-
-  li {
-    margin: 0.3em 0;
+    user-select: none;
+    margin: 0.5rem 0;
   }
 </style>
 
-<div class="columns">
-  {# Left column #}
-  <div class="column">
-    {% for sectionPath, pages in sections %}
-      {% set parts = sectionPath.split("/") %}
-      {% set summaryName = parts[-1] %}
-      {% set basePath = "orneu" + "/" + parts | slugify(false, "/") %}
-      <details {% if loop.first %}open{% endif %}>
-        <summary>
-          {% set folder = folderLinks | select(fn(item) => item.name == summaryName) | first %}
-          {% if folder %}
-            <a href="/{{ folder.path }}/{{ summaryName | slugify }}" class="internal-link folder">{{ summaryName }}</a>
-          {% else %}
-            {{ summaryName }}
-          {% endif %}
-        </summary>
-
-        {% if pages %}
-        <ul>
-          {% for title in pages %}
-          <li>
-            <a href="/{{ basePath }}/{{ title | slugify }}" class="internal-link">{{ title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </details>
+<div class="front-index">
+  <nav>
+    {% for fileOrFolderName, fileOrFolder in filetree %}
+      {{ menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName) }}
     {% endfor %}
-  </div>
-
-  {# Right column (you could split based on prefix in sectionPath, or just output remaining Locais) #}
-  <div class="column">
-    {# Example: loop only sections beginning with "Locais" #}
-    {% for sectionPath, pages in sections if sectionPath.startsWith("Locais") %}
-      {% set parts = sectionPath.split("/") %}
-      {% set summaryName = parts[-2] %} {# e.g., "Nações" #}
-      {% set countryName = parts[-1] %}
-      <details>
-        <summary>{{ summaryName }}</summary>
-        <details>
-          <summary>
-            {% set folder = folderLinks | select(fn(item) => item.name == countryName) | first %}
-            {% if folder %}
-              <a href="/{{ folder.path }}/{{ countryName | slugify }}" class="internal-link folder">{{ countryName }}</a>
-            {% else %}
-              {{ countryName }}
-            {% endif %}
-          </summary>
-
-          {% if pages %}
-          <ul>
-            {% for lugar in pages %}
-            <li>
-              <a href="/orneu/localizacoes/paises/{{ parts[-1] | slugify }}/{{ lugar | slugify }}" class="internal-link">{{ lugar }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </details>
-      </details>
+  </nav>
+  <nav>
+    {{!-- We need to split filetree into two halves --}}
+    {% set items = filetree|list %}
+    {% set half = (items|length / 2)|round(0, 'ceil') %}
+    {% for key in items[half:] %}
+      {{ menuItem(key, filetree[key], 0, key) }}
     {% endfor %}
-  </div>
+  </nav>
 </div>
