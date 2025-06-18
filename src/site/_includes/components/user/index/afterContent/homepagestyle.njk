@@ -1,29 +1,37 @@
-<h2>Filetree Raw Data</h2>
-<pre>{{ filetree | safe | dump(4) }}</pre>
-
-<h2>Filetree Simple List</h2>
-<ul>
-  {% if filetree and filetree.Orneu %}
-    {% for key, node in filetree.Orneu %}
-      <li>
-        {{ key }} - 
-        {% if node.isNote %}
-          Note: <a href="{{ node.permalink }}">{{ node.name }}</a>
-        {% elif node.isFolder %}
-          Folder
-          <ul>
-            {% for childName, childNode in node %}
-              {% if childName not in ['isNote', 'isFolder'] %}
-                <li>{{ childName }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        {% else %}
-          Unknown type
-        {% endif %}
-      </li>
-    {% endfor %}
-  {% else %}
-    <li>No filetree.Orneu data found</li>
+{% macro menuItem(name, node, step = 0, currentPath = "") %}
+  {% if node.isNote and not node.hide %}
+    <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
+      <a href="{{ node.permalink }}">{{ node.name }}</a>
+    </div>
+  {% elif node.isFolder %}
+    <div class="folder-item" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
+      <div @click="open = !open" style="cursor:pointer; user-select:none;">
+        <span x-text="open ? '▼' : '▶'"></span> {{ name }}
+      </div>
+      <div x-show="open" style="margin-left: 1rem;">
+        {% for childName, childNode in node %}
+          {% if childName not in ['isNote', 'isFolder', 'hide', 'name', 'permalink', 'noteIcon', 'pinned'] %}
+            {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   {% endif %}
-</ul>
+{% endmacro %}
+
+<div x-data>
+  {% for key, node in filetree.Orneu %}
+    {{ menuItem(key, node) }}
+  {% endfor %}
+</div>
+
+<style>
+  .note-item a {
+    text-decoration: none;
+  }
+  .folder-item {
+    margin-bottom: 0.25rem;
+  }
+</style>
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
