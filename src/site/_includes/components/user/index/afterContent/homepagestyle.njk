@@ -33,156 +33,65 @@
 </style>
 
 <div class="columns">
+  {# Left column #}
   <div class="column">
-    {% set mitoPages = [
-      "Ecos da Criação",
-      "Panteão",
-      "Infestos"
-    ] %}
+    {% for sectionPath, pages in sections %}
+      {% set parts = sectionPath.split("/") %}
+      {% set summaryName = parts[-1] %}
+      {% set basePath = "orneu" + "/" + parts | slugify(false, "/") %}
+      <details {% if loop.first %}open{% endif %}>
+        <summary>
+          {% set folder = folderLinks | select(fn(item) => item.name == summaryName) | first %}
+          {% if folder %}
+            <a href="/{{ folder.path }}/{{ summaryName | slugify }}" class="internal-link folder">{{ summaryName }}</a>
+          {% else %}
+            {{ summaryName }}
+          {% endif %}
+        </summary>
 
-    {% set livrosPages = [
-      "Códice de Condensação Manual Integral para Aspirantes ao Batalhão de Engenheiros da Guarda Ferrovia Real"
-    ] %}
-
-    {% set magicosPages = [
-      "A Relíquia"
-    ] %}
-
-    <details open>
-      <summary>Mito da Criação</summary>
-      <ul>
-        {% for title in mitoPages %}
+        {% if pages %}
+        <ul>
+          {% for title in pages %}
           <li>
-            <a href="/orneu/mito-da-criacao/{{ title | slugify }}" class="internal-link">{{ title }}</a>
+            <a href="/{{ basePath }}/{{ title | slugify }}" class="internal-link">{{ title }}</a>
           </li>
-        {% endfor %}
-      </ul>
-    </details>
-
-    <details>
-      <summary>Itens</summary>
-      <details>
-        <summary>Livros</summary>
-        <ul>
-          {% for title in livrosPages %}
-            <li>
-              <a href="/orneu/itens/livros/{{ title | slugify }}" class="internal-link">{{ title }}</a>
-            </li>
           {% endfor %}
         </ul>
+        {% endif %}
       </details>
-      <details>
-        <summary>Mágicos</summary>
-        <ul>
-          {% for title in magicosPages %}
-            <li>
-              <a href="/orneu/itens/magicos/{{ title | slugify }}" class="internal-link">{{ title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </details>
-    </details>
-
-    {% set mapasPages = [
-      "Orneu Hemisfério Norte",
-      "Hutepec Distritos",
-      "Hutepec Pontos de Interesse"
-    ] %}
-
-    <details>
-      <summary>Mapas</summary>
-      <ul>
-        {% for title in mapasPages %}
-          <li>
-            <a href="/orneu/mapas/{{ title | slugify }}" class="internal-link">{{ title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
-
-    {% set guardioesSombrasPages = [
-      "Lyria Nyx"
-    ] %}
-
-    {% set circuloPages = [
-      "Lyria Nyx",
-      "Darek “Rastro-Partido” Thuell"
-    ] %}
-
-    {% set coletivoPages = [
-      "Velst Anjoral"
-    ] %}
-
-    <details>
-      <summary>Grupos Notáveis</summary>
-      <details>
-        <summary>Os Guardiões das Sombras</summary>
-        <ul>
-          {% for title in guardioesSombrasPages %}
-            <li><a href="/orneu/grupos-notaveis/os-guardiões-das-sombras/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
-          {% endfor %}
-        </ul>
-      </details>
-      <details>
-        <summary><a href="/orneu/grupos-notaveis/circulo-da-ultima-luz" class="internal-link">Círculo da Última Luz</a></summary>
-        <ul>
-          {% for title in circuloPages %}
-            <li><a href="/orneu/grupos-notaveis/circulo-da-ultima-luz/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
-          {% endfor %}
-        </ul>
-      </details>
-      <details>
-        <summary><a href="/orneu/grupos-notaveis/coletivo-claritate" class="internal-link">Coletivo Claritate</a></summary>
-        <ul>
-          {% for title in coletivoPages %}
-            <li><a href="/orneu/grupos-notaveis/coletivo-claritate/pessoas/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
-          {% endfor %}
-        </ul>
-      </details>
-      <details>
-        <summary><a href="/orneu/grupos-notaveis/paradoxo-austero" class="internal-link">Paradoxo Austero</a></summary>
-      </details>
-    </details>
+    {% endfor %}
   </div>
 
+  {# Right column (you could split based on prefix in sectionPath, or just output remaining Locais) #}
   <div class="column">
-    {% set nacoesPages = {
-      "República Triarquica da Leisafia": [
-        "Austbo, o Olho do Mar de Gazeth",
-        "Lopsvik ★",
-        "Malswaldberg"
-      ],
-      "Império Divino de Tawa": [
-        "Siyah ★",
-        "Almur — A Última Tocha antes do Gelo"
-      ],
-      "Império Nizakiano": [],
-      "Reino de Khishilia": [
-        "Hutepec — Capital Vapor-Marinha de Khishilia"
-      ],
-      "Principado de Mitzragia": [],
-      "Hathers": []
-    } %}
-
-    <details>
-      <summary>Locais</summary>
+    {# Example: loop only sections beginning with "Locais" #}
+    {% for sectionPath, pages in sections if sectionPath.startsWith("Locais") %}
+      {% set parts = sectionPath.split("/") %}
+      {% set summaryName = parts[-2] %} {# e.g., "Nações" #}
+      {% set countryName = parts[-1] %}
       <details>
-        <summary>Nações</summary>
-        {% for nação, lugares in nacoesPages %}
-          <details>
-            <summary>
-              <a href="/orneu/locais/nações/{{ nação | slugify }}" class="internal-link">{{ nação }}</a>
-            </summary>
-            {% if lugares | length > 0 %}
-            <ul>
-              {% for lugar in lugares %}
-                <li><a href="/orneu/locais/nações/{{ nação | slugify }}/{{ lugar | slugify }}" class="internal-link">{{ lugar }}</a></li>
-              {% endfor %}
-            </ul>
+        <summary>{{ summaryName }}</summary>
+        <details>
+          <summary>
+            {% set folder = folderLinks | select(fn(item) => item.name == countryName) | first %}
+            {% if folder %}
+              <a href="/{{ folder.path }}/{{ countryName | slugify }}" class="internal-link folder">{{ countryName }}</a>
+            {% else %}
+              {{ countryName }}
             {% endif %}
-          </details>
-        {% endfor %}
+          </summary>
+
+          {% if pages %}
+          <ul>
+            {% for lugar in pages %}
+            <li>
+              <a href="/orneu/localizacoes/paises/{{ parts[-1] | slugify }}/{{ lugar | slugify }}" class="internal-link">{{ lugar }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </details>
       </details>
-    </details>
+    {% endfor %}
   </div>
 </div>
