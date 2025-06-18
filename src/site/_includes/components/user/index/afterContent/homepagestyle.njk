@@ -1,29 +1,42 @@
-<h1>Homepage test</h1>
+{# homepagestyle.njk #}
 
-<div x-data="{ count: 0 }">
-  <button @click="count++">Click me</button>
-  <span>Count: <span x-text="count"></span></span>
-</div>
-
-<div x-data="{ isOpen: true }" style="border: 1px solid #ccc; padding: 1rem;">
-  {% macro menuItemOpenAll(name, item, step) %}
-    <div>
+{% macro menuItemOpenAll(name, item, step) %}
+  <div style="margin-left: {{ step * 1.5 }}rem; margin-bottom: 0.3rem;">
+    {% if item.isFolder %}
       <div><strong>{{ name }}</strong></div>
-      {% if item.isFolder %}
-        <div style="margin-left: 1rem;">
-          {% for childName, child in item %}
-            {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
-              {{ menuItemOpenAll(childName, child, step + 1) }}
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% elif item.isNote %}
-        <div style="margin-left: 1rem;">
-          <a href="{{ item.permalink }}">{{ item.name }}</a>
-        </div>
-      {% endif %}
-    </div>
-  {% endmacro %}
+      {% for childName, child in item %}
+        {# Skip metadata keys #}
+        {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
+          {{ menuItemOpenAll(childName, child, step + 1) }}
+        {% endif %}
+      {% endfor %}
+    {% elif item.isNote %}
+      <div>
+        <a href="{{ item.permalink }}">{{ item.name }}</a>
+      </div>
+    {% else %}
+      {# In case there are unexpected structures, just show the name #}
+      <div>{{ name }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
 
-  {{ menuItemOpenAll("Orneu", fileTreeData.Orneu, 0) }}
-</div>
+<style>
+  /* Simple styling for clarity */
+  a {
+    text-decoration: none;
+    color: #0366d6;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<h2>File Tree Index</h2>
+
+{# Check the root node "Orneu" exists #}
+{% if filetree and filetree.Orneu %}
+  {{ menuItemOpenAll("Orneu", filetree.Orneu, 0) }}
+{% else %}
+  <p>No filetree data found.</p>
+{% endif %}
