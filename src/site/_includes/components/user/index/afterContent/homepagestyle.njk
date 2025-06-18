@@ -1,3 +1,42 @@
+{% set folderIcons = {
+  "Grupos Notáveis": `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" aria-hidden="true">
+      <circle cx="32" cy="20" r="12" />
+      <path d="M12 54c0-8 8-14 20-14s20 6 20 14" />
+      <path d="M44 54c0-4-8-8-12-8s-12 4-12 8" />
+    </svg>
+  `,
+  "Itens": `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" aria-hidden="true">
+      <rect x="12" y="12" width="40" height="40" rx="4" ry="4" />
+      <path d="M32 32v12" />
+      <path d="M20 32h24" />
+    </svg>
+  `,
+  "Localizações": `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" />
+      <path d="M32 2v60" />
+      <path d="M2 32h60" />
+      <path d="M12 52l40-40" />
+      <path d="M52 52L12 12" />
+    </svg>
+  `,
+  "Mapas": `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" aria-hidden="true">
+      <polygon points="12 12 24 52 40 44 52 60" />
+      <polyline points="12 12 12 60 52 60" />
+    </svg>
+  `,
+  "Mito da Criação": `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" aria-hidden="true">
+      <path d="M48 8L16 56" />
+      <path d="M16 8L48 56" />
+      <circle cx="32" cy="32" r="10" />
+    </svg>
+  `
+} %}
+
 {% macro menuItem(name, node, step = 0, currentPath = "") %}
   {% if node.isNote and not node.hide %}
     <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
@@ -5,7 +44,10 @@
     </div>
   {% elif node.isFolder %}
     <div class="folder-item" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
-      <div @click="open = !open" style="cursor:pointer; user-select:none;">
+      <div @click="open = !open" style="cursor:pointer; user-select:none; text-align:center;">
+        <div class="folder-icon" aria-hidden="true" style="margin-bottom: 0.25rem;">
+          {{ folderIcons[name] | safe }}
+        </div>
         <span x-text="open ? '▼' : '▶'"></span> {{ name }}
       </div>
       <div x-show="open" style="margin-left: 1rem;">
@@ -20,40 +62,26 @@
 {% endmacro %}
 
 <div x-data>
-  <div class="filetree-grid">
-    {% for key, node in filetree.Orneu %}
-      {{ menuItem(key, node) }}
-    {% endfor %}
-  </div>
+  {% for key, node in filetree.Orneu %}
+    {{ menuItem(key, node) }}
+  {% endfor %}
 </div>
 
 <style>
-  .filetree-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    align-items: start;
+  .note-item a {
+    text-decoration: none;
   }
-
-  /* Ensure each top-level block is vertical so children stay grouped */
-  .filetree-grid > div {
-    display: flex;
-    flex-direction: column;
-  }
-
   .folder-item {
     margin-bottom: 0.25rem;
   }
-
-  .note-item {
-    margin-bottom: 0.25rem;
+  .folder-icon svg {
+    display: block;
+    margin: 0 auto;
+    stroke: #444;
+    transition: stroke 0.3s;
   }
-
-  .note-item a {
-    text-decoration: none;
-    color: inherit;
+  .folder-item > div[style*="cursor:pointer"]:hover .folder-icon svg {
+    stroke: #1d4ed8; /* blue on hover */
   }
 </style>
 
