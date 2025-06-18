@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/orneu-wiki/","pinned":true,"tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/orneu/orneu-wiki/","pinned":true,"tags":["gardenEntry"],"dgShowInlineTitle":"false"}
 ---
 
 
