@@ -23,9 +23,6 @@
   {% endif %}
 {% endmacro %}
 
-<!-- Welcome Title -->
-<div class="welcome-message">Bem-vindo à Wiki do Mundo de Orneu!</div>
-
 <!-- Folder Grid -->
 <div x-data class="folder-grid">
   {% for key, node in filetree.Orneu %}
@@ -37,16 +34,6 @@
 
 <!-- Styles -->
 <style>
-
-@import url('https://fonts.googleapis.com/css?family=Eczar');
-
-  .welcome-message {
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'Eczar', serif;
-    margin-bottom: 2rem;
-    color: #C14343;
-  }
 
   .folder-grid {
     display: grid;
