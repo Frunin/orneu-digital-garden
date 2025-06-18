@@ -1,24 +1,14 @@
 {% macro menuItem(name, node, step = 0, currentPath = "") %}
-  {# Define folderIcons INSIDE the macro for reliable access #}
-  {% set folderIcons = {
-    "Grupos Notáveis": `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="36" height="36" viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm3.124 1.5h-.427a6.5 6.5 0 0 1-5.394 0h-.427A5.876 5.876 0 0 0 3 19.376a.624.624 0 0 0 .624.624h16.752a.624.624 0 0 0 .624-.624A5.876 5.876 0 0 0 15.124 13.5Z"/></svg>`,
-    "Itens": `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="36" height="36" viewBox="0 0 24 24"><path d="M21.707 20.293 18.6 17.186a7.932 7.932 0 0 0 1.4-4.486C20 8.262 16.738 5 12.7 5S5.4 8.262 5.4 12.7 8.662 20.4 12.7 20.4a7.932 7.932 0 0 0 4.486-1.4l3.107 3.107a1 1 0 0 0 1.414-1.414ZM12.7 18.4a5.7 5.7 0 1 1 0-11.4 5.7 5.7 0 0 1 0 11.4Z"/></svg>`,
-    "Localizações": `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="36" height="36" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2c.872 0 1.71.146 2.488.41-.553.215-1.108.508-1.664.886C11.947 6.258 11.084 6.992 10.21 8H7.042a8.004 8.004 0 0 1 4.958-4ZM4.062 8h2.63c-.31.671-.587 1.36-.82 2.068a29.13 29.13 0 0 0-.78 3.004H4.062a7.97 7.97 0 0 1 0-5.072Zm.98 7h1.656c.108.747.273 1.454.486 2.104.146.438.308.85.486 1.228a8.027 8.027 0 0 1-2.628-3.332ZM8.49 19.124a11.26 11.26 0 0 1-.874-2.124h2.568a19.34 19.34 0 0 1 .384 3.636 7.98 7.98 0 0 1-2.078-1.512Zm4.002 1.86A21.32 21.32 0 0 0 12 16a21.32 21.32 0 0 0-.49-3.982C12.3 11.543 13.12 11 14 11c.64 0 1.199.23 1.618.572.07.217.135.438.194.662a18.28 18.28 0 0 1-.82 9.172 8.03 8.03 0 0 1-2.5-.422Zm4.77-1.772a20.24 20.24 0 0 0 .74-6.61 3.001 3.001 0 0 0-5.2-1.206 7.34 7.34 0 0 0-.374-.29c.386-.31.764-.59 1.132-.836a7.008 7.008 0 0 1 3.19-1.254A7.99 7.99 0 0 1 20 12a7.99 7.99 0 0 1-2.738 6.212ZM16 5c.963.983 1.763 2.158 2.334 3.432a9.02 9.02 0 0 1-3.38.738A6.83 6.83 0 0 0 14 9c-.216 0-.427.017-.634.046a8.1 8.1 0 0 1 2.634-3.046Z"/></svg>`,
-    "Mapas": `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="36" height="36" viewBox="0 0 24 24"><path d="m9 4 6 2 6-2v15l-6 2-6-2-6 2V6l6-2Zm6 2-6-2v13.764l6 2.001V6Zm-12 1.236v13.764l4-1.333V5.903l-4 1.333Zm14 12.528 4-1.333V4.667l-4 1.333v13.764Z"/></svg>`,
-    "Mito da Criação": `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="36" height="36" viewBox="0 0 24 24"><path d="M6 3v5h2V5.414l2 2V11h2V7.414l2-2V21h2V3h-2.586L12 5.414 8.586 2H6v1Zm-1 9v2h2v-2H5Zm0 4v2h2v-2H5Z"/></svg>`
-  } %}
-
   {% if node.isNote and not node.hide %}
     <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
       <a href="{{ node.permalink }}">{{ node.name }}</a>
     </div>
   {% elif node.isFolder %}
-    <div class="folder-item" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
-      <div @click="open = !open" style="cursor:pointer; user-select:none; text-align:center;">
-        {% if folderIcons[name] %}
-          <div class="folder-icon" style="margin-bottom: 0.25rem;">{{ folderIcons[name] | safe }}</div>
-        {% endif %}
-        <span x-text="open ? '▼' : '▶'"></span> {{ name }}
+    <div class="folder-item folder-{{ name | lower | replace(' ', '-') }}" style="margin-left: {{ step * 1.5 }}rem;" x-data="{ open: false }">
+      <div @click="open = !open" style="cursor:pointer; user-select:none; display: flex; align-items: center;">
+        <span class="folder-icon"></span>
+        <span x-text="open ? '▼' : '▶'"></span>
+        <span style="margin-left: 0.5rem;">{{ name }}</span>
       </div>
       <div x-show="open" style="margin-left: 1rem;">
         {% for childName, childNode in node %}
@@ -41,13 +31,41 @@
   .note-item a {
     text-decoration: none;
   }
+
   .folder-item {
     margin-bottom: 0.25rem;
   }
+
   .folder-icon {
-    width: 36px;
-    height: 36px;
-    margin: 0 auto;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-right: 0.5rem;
+  }
+
+  /* Folder-specific SVG icons as background images */
+
+  .folder-grupos-notáveis .folder-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm3.124 1.5h-.427a6.5 6.5 0 0 1-5.394 0h-.427A5.876 5.876 0 0 0 3 19.376a.624.624 0 0 0 .624.624h16.752a.624.624 0 0 0 .624-.624A5.876 5.876 0 0 0 15.124 13.5Z'/></svg>");
+  }
+
+  .folder-itens .folder-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M21.707 20.293 18.6 17.186a7.932 7.932 0 0 0 1.4-4.486C20 8.262 16.738 5 12.7 5S5.4 8.262 5.4 12.7 8.662 20.4 12.7 20.4a7.932 7.932 0 0 0 4.486-1.4l3.107 3.107a1 1 0 0 0 1.414-1.414ZM12.7 18.4a5.7 5.7 0 1 1 0-11.4 5.7 5.7 0 0 1 0 11.4Z'/></svg>");
+  }
+
+  .folder-localizações .folder-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2a10 10 0 1 0 10 10A10.013 10.013 0 0 0 12 2Zm8 10a8.078 8.078 0 0 1-.686 3.253l-1.723-1.58a1.5 1.5 0 0 0-1.2-.396L12.646 14.1l.188-2.255a.5.5 0 0 0-.615-.52l-3.483.83-1.078-1.394a.5.5 0 0 0-.886.325l-.027 2.626-1.952.482a7.975 7.975 0 0 1-.223-5.193l2.451.545a.5.5 0 0 0 .6-.4l.503-2.67 2.85-.57.83 2.491a.5.5 0 0 0 .939.036L13.3 4.285A8.033 8.033 0 0 1 20 12Z'/></svg>");
+  }
+
+  .folder-mapas .folder-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.5 2.02a.97.97 0 0 0-.57.15L15 4.83 9 2.02 3.57 4.78a1 1 0 0 0-.57.9v16.3a1 1 0 0 0 1.43.9L9 20.17l6 2.81 5.43-2.76a1 1 0 0 0 .57-.9V3a1 1 0 0 0-.5-.98ZM15 20.17l-6-2.81V3.83l6 2.8Z'/></svg>");
+  }
+
+  .folder-mito-da-criação .folder-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 3a1 1 0 0 0-1 1v6a4 4 0 0 0 3 3.87V21a1 1 0 0 0 2 0v-7.13a4 4 0 0 0 3-3.87V4a1 1 0 0 0-2 0v6a2 2 0 0 1-4 0V4a1 1 0 0 0-1-1Z'/></svg>");
   }
 </style>
 
