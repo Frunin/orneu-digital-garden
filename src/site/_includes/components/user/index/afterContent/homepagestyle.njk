@@ -9,7 +9,6 @@
     <div class="folder-item folder-{{ name | lower | replace(' ', '-') }}" x-data="{ open: false }">
       <div @click="open = !open" class="folder-header">
         <div class="folder-icon"></div>
-        <span x-text="open ? '▼' : '▶'"></span>
         <span class="folder-title">{{ name }}</span>
       </div>
       <div x-show="open" class="folder-children">
