@@ -1,34 +1,24 @@
 {# homepagestyle.njk #}
 
-{% macro menuItem(fileOrFolderName, fileOrFolder, step, currentPath) %}
-  {% if fileOrFolder.isNote or fileOrFolder.isFolder %}
-    <div x-data="{ isOpen: step === 0 ? true : false }" style="margin-left: {{ step * 1.2 }}rem; margin-bottom: 0.4rem;">
-      {% if fileOrFolder.isFolder %}
-        <div 
-          class="foldername-wrapper align-icon" 
-          @click.stop="isOpen = !isOpen" 
-          style="cursor: pointer; font-weight: bold; user-select: none;"
-          >
-          <span x-show="isOpen" style="display:none;">▼</span>
-          <span x-show="!isOpen">▶</span>
-          <span class="foldername" style="margin-left: 0.3rem;">{{ fileOrFolderName }}</span>
-        </div>
-        <div x-show="isOpen" style="margin-top: 0.3rem;" x-cloak>
-          {% for childName, childNode in fileOrFolder %}
-            {% if childName not in ['isNote', 'isFolder', 'permalink', 'name', 'noteIcon', 'hide', 'pinned'] %}
-              {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% elif fileOrFolder.isNote and not fileOrFolder.hide %}
-        <div class="notelink" style="margin-left: 1.5rem;">
-          <a href="{{ fileOrFolder.permalink }}" style="text-decoration: none; color: inherit;">
-            {{ fileOrFolder.name }}
-          </a>
-        </div>
-      {% endif %}
-    </div>
-  {% endif %}
+{% macro menuItemOpenAll(name, item, step) %}
+  <div style="margin-left: {{ step * 1.5 }}rem; margin-bottom: 0.3rem;">
+    {% if item.isFolder %}
+      <div><strong>{{ name }}</strong></div>
+      {% for childName, child in item %}
+        {# Skip metadata keys #}
+        {% if childName not in ["isNote", "isFolder", "hide", "permalink", "name", "noteIcon", "pinned"] %}
+          {{ menuItemOpenAll(childName, child, step + 1) }}
+        {% endif %}
+      {% endfor %}
+    {% elif item.isNote %}
+      <div>
+        <a href="{{ item.permalink }}">{{ item.name }}</a>
+      </div>
+    {% else %}
+      {# In case there are unexpected structures, just show the name #}
+      <div>{{ name }}</div>
+    {% endif %}
+  </div>
 {% endmacro %}
 
 <style>
