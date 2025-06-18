@@ -20,7 +20,7 @@
 {% endmacro %}
 
 <div x-data>
-  <div class="filetree-multicolumn">
+  <div class="filetree-grid">
     {% for key, node in filetree.Orneu %}
       {{ menuItem(key, node) }}
     {% endfor %}
@@ -28,11 +28,19 @@
 </div>
 
 <style>
-  .filetree-multicolumn {
+  .filetree-grid {
     max-width: 1200px;
     margin: 0 auto;
-    columns: 2;
-    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Ensure each top-level block is vertical so children stay grouped */
+  .filetree-grid > div {
+    display: flex;
+    flex-direction: column;
   }
 
   .folder-item {
