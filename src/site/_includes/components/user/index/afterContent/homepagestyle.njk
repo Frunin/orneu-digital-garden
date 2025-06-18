@@ -1,29 +1,10 @@
 {% import "components/filetree.njk" as FileTree %}
-
-<style>
-.front-index {
-  display: block !important;
-}
-.front-index > nav {
-  max-width: 100% !important;
-  flex: none !important;
-}
-</style>
-
-<div class="front-index">
+<div>
   {% set items = filetree %}
-  {% set keys = items | dictsort %}
-  {% set half = (keys | length / 2) | round(0, 'ceil') %}
-
-  <nav>
-    {% for key, node in keys[0:half] %}
+  {% for key, node in items %}
+    <div>
+      <h3>{{ key }}</h3>
       {{ FileTree.menuItem(key, node, 0, key) }}
-    {% endfor %}
-  </nav>
-
-  <nav>
-    {% for key, node in keys[half:] %}
-      {{ FileTree.menuItem(key, node, 0, key) }}
-    {% endfor %}
-  </nav>
+    </div>
+  {% endfor %}
 </div>
