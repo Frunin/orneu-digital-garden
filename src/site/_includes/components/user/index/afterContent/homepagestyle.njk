@@ -1,8 +1,10 @@
 {% macro menuItem(name, node, step = 0, currentPath = "") %}
   {% if node.isNote and not node.hide %}
-    <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
-      <a href="{{ node.permalink }}">{{ node.name }}</a>
-    </div>
+    {% if name != 'Orneu Wiki.md' %}
+      <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
+        <a href="{{ node.permalink }}">{{ node.name }}</a>
+      </div>
+    {% endif %}
   {% elif node.isFolder %}
     <div class="folder-item folder-{{ name | lower | replace(' ', '-') }}" x-data="{ open: false }">
       <div @click="open = !open" class="folder-header">
@@ -23,7 +25,9 @@
 
 <div x-data class="folder-grid">
   {% for key, node in filetree.Orneu %}
-    {{ menuItem(key, node) }}
+    {% if not node.isNote or key != 'Orneu Wiki.md' %}
+      {{ menuItem(key, node) }}
+    {% endif %}
   {% endfor %}
 </div>
 
@@ -40,9 +44,11 @@
 
   .folder-item {
     margin-bottom: 1rem;
-    border-radius: 8px;
-    padding: 0.5rem;
-    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: #1f1f1f; /* Dark background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Blur + shadow */
+    color: #f0f0f0;
   }
 
   .folder-header {
