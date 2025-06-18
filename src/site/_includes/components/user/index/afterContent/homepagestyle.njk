@@ -1,7 +1,7 @@
 {% macro menuItem(name, node, step = 0, currentPath = "") %}
   {% if node.isNote and not node.hide %}
     {% if name != 'Orneu Wiki.md' %}
-      <div class="note-item" style="margin-left: {{ step * 1.5 }}rem;">
+      <div class="note-item">
         <a href="{{ node.permalink }}">{{ node.name }}</a>
       </div>
     {% endif %}
@@ -15,7 +15,7 @@
       <div x-show="open" class="folder-children">
         {% for childName, childNode in node %}
           {% if childName not in ['isNote', 'isFolder', 'hide', 'name', 'permalink', 'noteIcon', 'pinned'] %}
-            {{ menuItem(childName, childNode, step + 1, currentPath + '/' + childName) }}
+            {{ menuItem(childName, childNode, 0, currentPath + '/' + childName) }}
           {% endif %}
         {% endfor %}
       </div>
@@ -36,18 +36,25 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    grid-auto-rows: minmax(min-content, max-content);
+  }
+
+  .note-item {
+    text-align: center;
+    margin-top: 0.25rem;
   }
 
   .note-item a {
     text-decoration: none;
+    color: #f0f0f0;
   }
 
   .folder-item {
     margin-bottom: 1rem;
     border-radius: 10px;
     padding: 0.75rem;
-    background: #1f1f1f; /* Dark background */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Blur + shadow */
+    background: #1f1f1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     color: #f0f0f0;
   }
 
@@ -76,11 +83,12 @@
 
   .folder-children {
     margin-top: 0.5rem;
-    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Folder-specific icons from URLs */
-
+  /* Folder-specific icons */
   .folder-grupos-notáveis .folder-icon {
     background-image: url('https://www.svgrepo.com/show/501214/group.svg');
   }
