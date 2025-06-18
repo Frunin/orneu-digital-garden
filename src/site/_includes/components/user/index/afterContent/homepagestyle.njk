@@ -34,12 +34,28 @@
 
 <div class="columns">
   <div class="column">
+    {% set mitoPages = [
+      "Ecos da Criação",
+      "Panteão",
+      "Infestos"
+    ] %}
+
+    {% set livrosPages = [
+      "Códice de Condensação Manual Integral para Aspirantes ao Batalhão de Engenheiros da Guarda Ferrovia Real"
+    ] %}
+
+    {% set magicosPages = [
+      "A Relíquia"
+    ] %}
+
     <details open>
       <summary>Mito da Criação</summary>
       <ul>
-        <li><a data-href="Ecos da Criação" class="internal-link">Ecos da Criação</a></li>
-        <li><a data-href="Panteão" class="internal-link">Panteão</a></li>
-        <li><a data-href="Infestos" class="internal-link">Infestos</a></li>
+        {% for title in mitoPages %}
+          <li>
+            <a href="/orneu/mito-da-criacao/{{ title | slugify }}" class="internal-link">{{ title }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </details>
 
@@ -48,88 +64,124 @@
       <details>
         <summary>Livros</summary>
         <ul>
-          <li><a data-href="Códice de Condensação Manual Integral para Aspirantes ao Batalhão de Engenheiros da Guarda Ferrovia Real" class="internal-link">Códice de Condensação...</a></li>
+          {% for title in livrosPages %}
+            <li>
+              <a href="/orneu/itens/livros/{{ title | slugify }}" class="internal-link">{{ title }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </details>
       <details>
         <summary>Mágicos</summary>
         <ul>
-          <li><a data-href="A Relíquia" class="internal-link">A Relíquia</a></li>
+          {% for title in magicosPages %}
+            <li>
+              <a href="/orneu/itens/magicos/{{ title | slugify }}" class="internal-link">{{ title }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </details>
     </details>
+
+    {% set mapasPages = [
+      "Orneu Hemisfério Norte",
+      "Hutepec Distritos",
+      "Hutepec Pontos de Interesse"
+    ] %}
 
     <details>
       <summary>Mapas</summary>
       <ul>
-        <li><a data-href="Orneu Hemisfério Norte" class="internal-link">Orneu Hemisfério Norte</a></li>
-        <li><a data-href="Hutepec Distritos" class="internal-link">Hutepec Distritos</a></li>
-        <li><a data-href="Hutepec Pontos de Interesse" class="internal-link">Hutepec Pontos de Interesse</a></li>
+        {% for title in mapasPages %}
+          <li>
+            <a href="/orneu/mapas/{{ title | slugify }}" class="internal-link">{{ title }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </details>
 
+    {% set guardioesSombrasPages = [
+      "Lyria Nyx"
+    ] %}
+
+    {% set circuloPages = [
+      "Lyria Nyx",
+      "Darek “Rastro-Partido” Thuell"
+    ] %}
+
+    {% set coletivoPages = [
+      "Velst Anjoral"
+    ] %}
+
     <details>
-      <summary>Grupos</summary>
+      <summary>Grupos Notáveis</summary>
       <details>
         <summary>Os Guardiões das Sombras</summary>
         <ul>
-          <li><a data-href="Lyria Nyx" class="internal-link">Lyria Nyx</a></li>
+          {% for title in guardioesSombrasPages %}
+            <li><a href="/orneu/grupos-notaveis/os-guardiões-das-sombras/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
+          {% endfor %}
         </ul>
       </details>
       <details>
-        <summary><a data-href="Círculo da Última Luz" class="internal-link">Círculo da Última Luz</a></summary>
+        <summary><a href="/orneu/grupos-notaveis/circulo-da-ultima-luz" class="internal-link">Círculo da Última Luz</a></summary>
         <ul>
-          <li><a data-href="Lyria Nyx" class="internal-link">Lyria Nyx</a></li>
-          <li><a data-href="Darek “Rastro-Partido” Thuell" class="internal-link">Darek “Rastro-Partido” Thuell</a></li>
+          {% for title in circuloPages %}
+            <li><a href="/orneu/grupos-notaveis/circulo-da-ultima-luz/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
+          {% endfor %}
         </ul>
       </details>
       <details>
-        <summary><a data-href="Coletivo Claritate" class="internal-link">Coletivo Claritate</a></summary>
+        <summary><a href="/orneu/grupos-notaveis/coletivo-claritate" class="internal-link">Coletivo Claritate</a></summary>
         <ul>
-          <li><a data-href="Orneu/Grupos Notáveis/Coletivo Claritate/Pessoas/Velst Anjoral" class="internal-link">Velst Anjoral</a></li>
+          {% for title in coletivoPages %}
+            <li><a href="/orneu/grupos-notaveis/coletivo-claritate/pessoas/{{ title | slugify }}" class="internal-link">{{ title }}</a></li>
+          {% endfor %}
         </ul>
       </details>
       <details>
-        <summary><a data-href="Paradoxo Austero" class="internal-link">Paradoxo Austero</a></summary>
+        <summary><a href="/orneu/grupos-notaveis/paradoxo-austero" class="internal-link">Paradoxo Austero</a></summary>
       </details>
     </details>
   </div>
 
   <div class="column">
+    {% set nacoesPages = {
+      "República Triarquica da Leisafia": [
+        "Austbo, o Olho do Mar de Gazeth",
+        "Lopsvik ★",
+        "Malswaldberg"
+      ],
+      "Império Divino de Tawa": [
+        "Siyah ★",
+        "Almur — A Última Tocha antes do Gelo"
+      ],
+      "Império Nizakiano": [],
+      "Reino de Khishilia": [
+        "Hutepec — Capital Vapor-Marinha de Khishilia"
+      ],
+      "Principado de Mitzragia": [],
+      "Hathers": []
+    } %}
+
     <details>
       <summary>Locais</summary>
       <details>
         <summary>Nações</summary>
-        <details>
-          <summary><a data-href="República Triarquica da Leisafia" class="internal-link">República Triarquica da Leisafia</a></summary>
-          <ul>
-            <li><a data-href="Austbo, o Olho do Mar de Gazeth" class="internal-link">Austbo</a></li>
-            <li><a data-href="Lopsvik" class="internal-link">Lopsvik ★</a></li>
-            <li><a data-href="Malswaldberg" class="internal-link">Malswaldberg</a></li>
-          </ul>
-        </details>
-        <details>
-          <summary><a data-href="Império Divino de Tawa" class="internal-link">Império Divino de Tawa</a></summary>
-          <ul>
-            <li><a data-href="Siyah" class="internal-link">Siyah ★</a></li>
-            <li><a data-href="Almur — A Última Tocha antes do Gelo" class="internal-link">Almur</a></li>
-          </ul>
-        </details>
-        <details>
-          <summary><a data-href="Império Nizakiano" class="internal-link">Império Nizakiano</a></summary>
-        </details>
-        <details>
-          <summary><a data-href="Reino de Khishilia" class="internal-link">Reino de Khishilia</a></summary>
-          <ul>
-            <li><a data-href="Hutepec — Capital Vapor-Marinha de Khishilia" class="internal-link">Hutepec ★</a></li>
-          </ul>
-        </details>
-        <details>
-          <summary><a data-href="Principado de Mitzragia" class="internal-link">Principado de Mitzragia</a></summary>
-        </details>
-        <details>
-          <summary><a data-href="Hathers" class="internal-link">Hathers</a></summary>
-        </details>
+        {% for nação, lugares in nacoesPages %}
+          <details>
+            <summary>
+              <a href="/orneu/locais/nações/{{ nação | slugify }}" class="internal-link">{{ nação }}</a>
+            </summary>
+            {% if lugares | length > 0 %}
+            <ul>
+              {% for lugar in lugares %}
+                <li><a href="/orneu/locais/nações/{{ nação | slugify }}/{{ lugar | slugify }}" class="internal-link">{{ lugar }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </details>
+        {% endfor %}
       </details>
     </details>
   </div>
