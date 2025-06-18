@@ -23,6 +23,10 @@
   {% endif %}
 {% endmacro %}
 
+<!-- Welcome Title -->
+<h1 class="welcome-title">Bem-vindo à Wiki do Mundo de Orneu!</h1>
+
+<!-- Folder Grid -->
 <div x-data class="folder-grid">
   {% for key, node in filetree.Orneu %}
     {% if not node.isNote or key != 'Orneu Wiki.md' %}
@@ -31,7 +35,15 @@
   {% endfor %}
 </div>
 
+<!-- Styles -->
 <style>
+  .welcome-title {
+    text-align: center;
+    font: 3rem "Fira Sans", sans-serif;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+  }
+
   .folder-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -40,8 +52,8 @@
   }
 
   .folder-grid > div {
-  align-self: start;
-}
+    align-self: start;
+  }
 
   .note-item {
     text-align: center;
@@ -53,15 +65,14 @@
     color: #CA8A1F;
   }
 
-.folder-item {
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  padding: 0.75rem;
-  background: #1f1f1f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  color: #f0f0f0;
-  align-self: center; /* 💡 Added line to prevent row stretching */
-}
+  .folder-item {
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: #1f1f1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    color: #f0f0f0;
+  }
 
   .folder-header {
     display: flex;
@@ -116,4 +127,5 @@
   }
 </style>
 
+<!-- AlpineJS -->
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
