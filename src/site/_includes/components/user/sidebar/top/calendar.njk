@@ -4,21 +4,19 @@
 
 {# === Calendar data from calendario-orneu-geral.json === #}
 {% set months = [
-  { "name": "Canto Inicial", "length": 40 },
-  { "name": "Sopro Calmo", "length": 40 },
-  { "name": "Ecos Crescentes", "length": 40 },
-  { "name": "Ascensão", "length": 40 },
-  { "name": "Estiagem", "length": 40 },
-  { "name": "Sol Ardente", "length": 40 },
-  { "name": "Ressonância", "length": 40 },
-  { "name": "Sussurros", "length": 40 },
-  { "name": "Folha Partida", "length": 40 },
-  { "name": "Entardecer", "length": 40 },
-  { "name": "Silêncio", "length": 5 }
+  { "name": "Canto Inicial", "length": 25 },
+  { "name": "Fó", "length": 25 },
+  { "name": "Dé", "length": 25 },
+  { "name": "Gi", "length": 25 },
+  { "name": "Ká", "length": 30 },
+  { "name": "Tó", "length": 25 },
+  { "name": "Rá", "length": 25 },
+  { "name": "Pi", "length": 30 },
+  { "name": "Canto Final", "length": 25 }
 ] %}
 
-{% set weekdays = ["Ruth", "Nuar", "Garn", "Pel", "Shi", "Oth"] %}
-{% set firstDay = 0 %} {# 0 = Ruth #}
+{% set weekdays = ["Calaneu", "Kanchiante", "Avalia", "Bertua", "Postadro", "Guinardo"] %}
+{% set firstDay = 0 %} {# 0 = Calaneu #}
 
 {# === Select current month and calculate offset === #}
 {% set month = months[currentMonth] %}
