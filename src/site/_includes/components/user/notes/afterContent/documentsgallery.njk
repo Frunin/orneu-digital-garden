@@ -1,15 +1,13 @@
 {% if page.fileSlug == "Galeria de Documentos" %}
 
-<h2>Image Files Debug Dump</h2>
+<h2>All Files Debug Dump</h2>
 
 <ul>
   {% for file in files %}
-    {% if file.path.indexOf("src/site/img/user/Orneu/Documentos/") == 0 and file.name | test(".*\\.(png|jpe?g|gif|webp)$") %}
-      <li>
-        <strong>{{ file.name }}</strong>
-        <pre>{{ file | dump }}</pre>
-      </li>
-    {% endif %}
+    <li>
+      <strong>{{ file.name }}</strong> - {{ file.path }}
+      <pre>{{ file | dump }}</pre>
+    </li>
   {% endfor %}
 </ul>
 
