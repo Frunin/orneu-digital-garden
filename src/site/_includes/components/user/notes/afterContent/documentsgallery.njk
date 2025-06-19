@@ -1,13 +1,48 @@
 {% if page.fileSlug == "Galeria de Documentos" %}
 
-<h2>Image Files from Custom Collection</h2>
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
 
-<ul>
-  {% for file in collections.orneuImages %}
-    <li>
-      <strong>{{ file.name }}</strong> - <a href="{{ file.path }}" target="_blank">{{ file.path }}</a>
-    </li>
+  .image-item {
+    text-align: center;
+  }
+
+  .image-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .image-item img:hover {
+    transform: scale(1.05);
+  }
+
+  .image-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<div class="image-grid">
+
+  <p>Total files: {{ images.length }}</p>
+
+  {% for file in images %}
+    <div class="image-item">
+      <a href="{{ file.url }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ file.url }}" alt="{{ file.name }}">
+      </a>
+      <div class="image-caption">{{ file.name }}</div>
+    </div>
   {% endfor %}
-</ul>
+
+</div>
 
 {% endif %}
