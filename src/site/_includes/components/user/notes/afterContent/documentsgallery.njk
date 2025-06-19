@@ -1,5 +1,4 @@
-<p>Total files: {{ files.length }}</p>
-
+{% if title == "Galeria de Documentos" %}
 
 <style>
   .image-grid {
@@ -32,6 +31,9 @@
 </style>
 
 <div class="image-grid">
+
+  <p>Total files: {{ files.length }}</p>
+
   {% for file in files %}
     {% if file.path.startsWith("src/site/img/user/Orneu/Documentos/") and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
       <div class="image-item">
