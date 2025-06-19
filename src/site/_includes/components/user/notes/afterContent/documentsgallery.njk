@@ -37,7 +37,7 @@
       <a href="{{ file.path }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ file.path }}" alt="{{ file.name }}">
       </a>
-      <div class="image-caption"></div>
+      <div class="image-caption">{{ file.name | replace(/\.[^/.]+$/, "") }}</div>
     </div>
   {% endfor %}
 </div>
