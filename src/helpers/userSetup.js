@@ -12,7 +12,7 @@ function userEleventySetup(eleventyConfig) {
 
   eleventyConfig.addCollection("orneuImages", function(collectionApi) {
     // Absolute path to your images folder
-    const imagesDir = path.join(__dirname, "src/site/img/user/Orneu/Documentos");
+    const imagesDir = path.join(__dirname, "..", "site", "img", "user", "Orneu", "Documentos");
 
     // Read all files synchronously
     let files = [];
