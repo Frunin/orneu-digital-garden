@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/orneu/mapas/orneu-hemisferio-norte/"}
+{"dg-publish":true,"permalink":"/orneu/mapas/orneu-hemisferio-norte/","tags":["mapas"]}
 ---
 
 **Clique Duplo**: Zoom
