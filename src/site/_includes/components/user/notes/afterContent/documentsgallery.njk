@@ -1,44 +1,5 @@
-<!-- Debug: check if component renders -->
-<p>✅ Image Grid Component Loaded</p>
-
-<div class="image-grid">
+<ul>
   {% for key, node in filetree.Orneu.Documentos %}
-    {% if node.isNote and key.match(/\.(png|jpe?g|gif|webp)$/i) %}
-      <div class="image-item">
-        <a href="{{ node.permalink }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ node.permalink }}" alt="{{ key }}" />
-        </a>
-        <div class="image-caption">{{ key }}</div>
-      </div>
-    {% endif %}
+    <li>{{ key }} (isNote: {{ node.isNote }})</li>
   {% endfor %}
-</div>
-
-<style>
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 1rem 0;
-}
-
-.image-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.image-item img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.image-caption {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  text-align: center;
-  color: #ccc;
-}
-</style>
+</ul>
