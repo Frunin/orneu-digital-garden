@@ -1,5 +1,7 @@
+<p>✅ Component loaded</p>
+<p>Documentos keys:</p>
 <ul>
-  {% for key, node in filetree.Orneu.Documentos %}
-    <li>{{ key }} (isNote: {{ node.isNote }})</li>
+  {% for key, node in filetree.Orneu["Documentos"] %}
+    <li>{{ key }} — isNote: {{ node.isNote }}</li>
   {% endfor %}
 </ul>
