@@ -32,6 +32,9 @@ function userEleventySetup(eleventyConfig) {
 
     return imageFiles;
   });
+eleventyConfig.addFilter("removeExt", function(filename) {
+  return filename.replace(/\.[^/.]+$/, "");
+});
 }
 
 exports.userMarkdownSetup = userMarkdownSetup;
