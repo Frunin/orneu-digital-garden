@@ -21,7 +21,7 @@
 {# === Select current month and calculate offset === #}
 {% set month = months[currentMonth] %}
 
-<h2 class="calendar-title">Calendário de Orneu — {{ month.name }}</h2>
+<div class="calendar-title">Calendário de Orneu — {{ month.name }}</div>
 
 <div class="calendar-wrapper">
   <div class="month-block">
@@ -53,8 +53,10 @@
 
 .calendar-title {
   text-align: center;
+  font-size: 1.5rem; /* adjust as needed */
+  font-weight: bold;
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  color: #C14343; /* if needed to match theme */
 }
 
   .calendar-wrapper {
