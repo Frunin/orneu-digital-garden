@@ -30,12 +30,9 @@
   }
 </style>
 
-<h2>Galeria de Documentos</h2>
-
 <div class="image-grid">
-  <p>Total files: {{ collections.orneuImages | length }}</p>
 
-  {% for file in collections.orneuImages %}
+  {% for file in collections.documentosImages %}
     <div class="image-item">
       <a href="{{ file.path }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ file.path }}" alt="{{ file.name }}">
