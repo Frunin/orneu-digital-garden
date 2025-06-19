@@ -21,13 +21,13 @@
 {# === Select current month and calculate offset === #}
 {% set month = months[currentMonth] %}
 
-<div class="calendar-title">Calendário de Orneu — Mês Atual: {{ month.name }}</div>
 
 <div class="calendar-wrapper">
-  <div class="month-block">
-    <div class="week-header">
-      {% for day in weekdays %}
-        <div class="weekday">{{ day }}</div>
+  <div class="calendar-title">Calendário de Orneu — Mês Atual: {{ month.name }}>
+    <div class="month-block">
+      <div class="week-header">
+        {% for day in weekdays %}
+          <div class="weekday">{{ day }}</div>
       {% endfor %}
     </div>
 
