@@ -32,7 +32,7 @@
 
 <div class="image-grid">
   {% for file in files %}
-    {% if file.path.startsWith("Orneu/Documentos/") and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
+    {% if file.path.startsWith("src/site/img/user/Orneu/Documentos/") and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
       <div class="image-item">
         <a href="{{ file.path | url }}" target="_blank" rel="noopener noreferrer">
           <img src="{{ file.path | url }}" alt="{{ file.name }}">
