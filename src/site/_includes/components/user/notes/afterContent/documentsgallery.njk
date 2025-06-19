@@ -1,12 +1,11 @@
 {% if page.fileSlug == "Galeria de Documentos" %}
 
-<h2>All Files Debug Dump</h2>
+<h2>Image Files from Custom Collection</h2>
 
 <ul>
-  {% for file in files %}
+  {% for file in collections.orneuImages %}
     <li>
-      <strong>{{ file.name }}</strong> - {{ file.path }}
-      <pre>{{ file | dump }}</pre>
+      <strong>{{ file.name }}</strong> - <a href="{{ file.path }}" target="_blank">{{ file.path }}</a>
     </li>
   {% endfor %}
 </ul>
