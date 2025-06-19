@@ -32,15 +32,13 @@
 
 <div class="image-grid">
 
-  {% set basePath = page.filePathStem %}
-
-  <p>Total files: {{ files | filter(f => f.path.startsWith(basePath) and f.name.match(/\.(png|jpe?g|gif|webp)$/i)) | length }}</p>
+  <p>Total files: {{ files | filter(f => f.path.startsWith("src/site/img/user/Orneu/Documentos/") and f.name.match(/\.(png|jpe?g|gif|webp)$/i)) | length }}</p>
 
   {% for file in files %}
-    {% if file.path.startsWith(basePath) and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
+    {% if file.path.startsWith("src/site/img/user/Orneu/Documentos/") and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
       <div class="image-item">
-        <a href="{{ file.path | url }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ file.path | url }}" alt="{{ file.name }}">
+        <a href="{{ file.path | url | replace('src/site', '') }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ file.path | url | replace('src/site', '') }}" alt="{{ file.name }}">
         </a>
         <div class="image-caption">{{ file.name }}</div>
       </div>
