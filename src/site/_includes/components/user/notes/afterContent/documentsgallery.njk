@@ -30,19 +30,19 @@
   }
 </style>
 
+<h2>Galeria de Documentos</h2>
+
 <div class="image-grid">
+  <p>Total files: {{ collections.orneuImages | length }}</p>
 
-  <p>Total files: {{ images.length }}</p>
-
-  {% for file in images %}
+  {% for file in collections.orneuImages %}
     <div class="image-item">
-      <a href="{{ file.url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ file.url }}" alt="{{ file.name }}">
+      <a href="{{ file.path }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ file.path }}" alt="{{ file.name }}">
       </a>
       <div class="image-caption">{{ file.name }}</div>
     </div>
   {% endfor %}
-
 </div>
 
 {% endif %}
