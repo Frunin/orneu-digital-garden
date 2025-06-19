@@ -1,49 +1,16 @@
 {% if page.fileSlug == "Galeria de Documentos" %}
 
-<style>
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
+<h2>Image Files Debug Dump</h2>
 
-  .image-item {
-    text-align: center;
-  }
-
-  .image-item img {
-    max-width: 100%;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .image-item img:hover {
-    transform: scale(1.05);
-  }
-
-  .image-caption {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
-</style>
-
-<div class="image-grid">
-
-  <p>Total files: {{ files | filter(f => f.path.startsWith("src/site/img/user/Orneu/Documentos/") and f.name.match(/\.(png|jpe?g|gif|webp)$/i)) | length }}</p>
-
-  {% for imageTag %}
-    {% if imageTag.path.startsWith("src/site/img/user/Orneu/Documentos/") and imageTag.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
-      <div class="image-item">
-        <a href="{{ file.path | url | replace('src/site', '') }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ file.path | url | replace('src/site', '') }}" alt="{{ file.name }}">
-        </a>
-        <div class="image-caption">{{ file.name }}</div>
-      </div>
+<ul>
+  {% for file in files %}
+    {% if file.path.indexOf("src/site/img/user/Orneu/Documentos/") == 0 and file.name | test(".*\\.(png|jpe?g|gif|webp)$") %}
+      <li>
+        <strong>{{ file.name }}</strong>
+        <pre>{{ file | dump }}</pre>
+      </li>
     {% endif %}
   {% endfor %}
-</div>
+</ul>
 
 {% endif %}
