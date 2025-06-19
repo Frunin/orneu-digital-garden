@@ -1,0 +1,46 @@
+{% if title == "Documentos" %}
+
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .image-item {
+    text-align: center;
+  }
+
+  .image-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .image-item img:hover {
+    transform: scale(1.05);
+  }
+
+  .image-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<div class="image-grid">
+  {% for file in files %}
+    {% if file.path.startsWith("Orneu/Documentos/") and file.name.match(/\.(png|jpe?g|gif|webp)$/i) %}
+      <div class="image-item">
+        <a href="{{ file.path | url }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ file.path | url }}" alt="{{ file.name }}">
+        </a>
+        <div class="image-caption">{{ file.name }}</div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% endif %}
