@@ -1,0 +1,6 @@
+---
+{"dg-publish":true,"permalink":"/orneu/documentos/documentos/"}
+---
+
+
+<div class="image-grid">   {% set images = dv.pages('"Documentos"')     | where(p => p.file.name.endsWith('.png') || p.file.name.endsWith('.jpg') || p.file.name.endsWith('.jpeg') || p.file.name.endsWith('.webp'))     | sort(p => p.file.name) %}   {% for img in images %}     <div class="image-item">       <a href="{{ img.file.path | urlencode }}" target="_blank">         <img src="{{ img.file.path | urlencode }}" alt="{{ img.file.name }}">       </a>       <div class="image-caption">{{ img.file.name | replace('.png', '') | replace('.jpg', '') | replace('.jpeg', '') | replace('.webp', '') }}</div>     </div>   {% endfor %} </div> <style> .image-grid {   display: grid;   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));   gap: 1rem;   margin-top: 1em; } .image-item {   text-align: center; } .image-item img {   max-width: 100%;   height: auto;   border-radius: 6px;   transition: transform 0.2s ease; } .image-item img:hover {   transform: scale(1.03); } .image-caption {   margin-top: 0.5em;   font-size: 0.9em;   color: var(--text-muted);   word-break: break-word; } </style>
