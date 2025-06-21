@@ -1,3 +1,30 @@
+{% set currentLocation = "Khishilia" %}
+{% set currentDay = current_day.value %} {# You can override manually for testing #}
+{% set precip = climate.precipitation[currentLocation] %}
+{% set temp = climate.temperature[currentLocation] %}
+
+{% set seed = currentDay * 31 + precip * 7 + temp * 13 %}
+{% set weatherTypes = ["Sol forte", "Chuva", "Nublado", "Tempestade", "Neve", "Neblina"] %}
+{% set index = seed % weatherTypes.length %}
+{% set weather = weatherTypes[index] %}
+
+{% set icons = {
+  "Sol forte": "☀️",
+  "Chuva": "🌧️",
+  "Nublado": "☁️",
+  "Tempestade": "⛈️",
+  "Neve": "❄️",
+  "Neblina": "🌫️"
+} %}
+
+<!-- Weather Box -->
+<div class="weather-box">
+  <h2 class="weather-title">📍 Localização Atual: {{ currentLocation }}</h2>
+  <p class="weather-desc">
+    Clima no dia {{ currentDay }}: <span class="icon">{{ icons[weather] }}</span> {{ weather }}
+  </p>
+</div>
+
 {% macro menuItem(name, node, step = 0, currentPath = "") %}
   {% if node.isNote and not node.hide %}
     {% if name != 'Orneu Wiki.md' %}
@@ -33,6 +60,30 @@
 
 <!-- Styles -->
 <style>
+  .weather-box {
+    background: #1e1e1e;
+    color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    margin-bottom: 2rem;
+  }
+
+  .weather-title {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .weather-desc {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .weather-desc .icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
 
   .folder-grid {
     display: grid;
@@ -116,18 +167,17 @@
     background-image: url('https://www.svgrepo.com/show/480272/harp-3.svg');
   }
 
-.folder-jogadores .folder-icon {
+  .folder-jogadores .folder-icon {
     background-image: url('https://www.svgrepo.com/show/499331/player-shot.svg');
   }
 
-.folder-a-jornada .folder-icon {
+  .folder-a-jornada .folder-icon {
     background-image: url('https://www.svgrepo.com/show/499367/scroll-unfurled.svg');
-}
-
-.folder-documentos .folder-icon {
-    background-image: url('https://www.svgrepo.com/show/535397/folder-open.svg');
   }
 
+  .folder-documentos .folder-icon {
+    background-image: url('https://www.svgrepo.com/show/535397/folder-open.svg');
+  }
 </style>
 
 <!-- AlpineJS -->
