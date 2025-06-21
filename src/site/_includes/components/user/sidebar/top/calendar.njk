@@ -1,6 +1,6 @@
 {# === CONFIG: Change these to highlight another date === #}
 {% set currentMonth = 0 %} {# 0-based index for "Canto Inicial" #}
-{% set currentDay = 11 %}
+{% set currentDay = current_day.value %}
 
 {# === Calendar data from calendario-orneu-geral.json === #}
 {% set months = [
