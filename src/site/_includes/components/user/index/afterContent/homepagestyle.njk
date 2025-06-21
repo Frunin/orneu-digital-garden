@@ -19,7 +19,7 @@
 
 <!-- Weather Box -->
 <div class="weather-box">
-  <p class="weather-title"> Localização Atual: {{ currentLocation }}</p>
+  <h2 class="weather-title"> Localização Atual: {{ currentLocation }}</h2>
   <p class="weather-desc">
     Clima no dia {{ currentDay }}: {{ weather }} <img class="weather-icon" src="{{ icons[weather] }}" alt="{{ weather }}" />
   </p>
@@ -69,6 +69,10 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     margin-bottom: 2rem;
   }
+  
+  h2 {
+  text-align: center;
+}
 
   .weather-title {
     margin: 0;
