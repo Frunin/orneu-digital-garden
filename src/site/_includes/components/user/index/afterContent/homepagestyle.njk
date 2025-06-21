@@ -1,7 +1,7 @@
 {% set currentLocation = "Khishilia" %}
 {% set currentDay = current_day.value %} {# You can override manually for testing #}
-{% set precip = climate.precipitation[currentLocation] %}
-{% set temp = climate.temperature[currentLocation] %}
+{% set precip = climate.precipitation["Khishilia"] or 14 %}
+{% set temp = climate.temperature["Khishilia"] or 17 %}
 
 {% set seed = currentDay * 31 + precip * 7 + temp * 13 %}
 {% set weatherTypes = ["Sol forte", "Chuva", "Nublado", "Tempestade", "Neve", "Neblina"] %}
