@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const parse = require('csv-parse/lib/sync');
+const { parse } = require('csv-parse/sync');
 
 function loadCSV(filename) {
   const file = fs.readFileSync(path.resolve(__dirname, filename), 'utf8');
