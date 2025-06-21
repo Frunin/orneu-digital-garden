@@ -9,19 +9,19 @@
 {% set weather = weatherTypes[index] %}
 
 {% set icons = {
-  "Sol forte": "☀️",
-  "Chuva": "🌧️",
-  "Nublado": "☁️",
-  "Tempestade": "⛈️",
-  "Neve": "❄️",
-  "Neblina": "🌫️"
+  "Sol forte": "https://www.svgrepo.com/show/427042/weather-icons-01.svg",
+  "Chuva": "https://www.svgrepo.com/show/426989/weather-icons-19.svg",
+  "Nublado": "https://www.svgrepo.com/show/427056/weather-icons-16.svg",
+  "Tempestade": "https://www.svgrepo.com/show/426997/weather-icons-28.svg",
+  "Neve": "https://www.svgrepo.com/show/427040/weather-icons-68.svg",
+  "Neblina": "https://www.svgrepo.com/show/427012/weather-icons-39.svg"
 } %}
 
 <!-- Weather Box -->
 <div class="weather-box">
   <h2 class="weather-title">📍 Localização Atual: {{ currentLocation }}</h2>
   <p class="weather-desc">
-    Clima no dia {{ currentDay }}: <span class="icon">{{ icons[weather] }}</span> {{ weather }}
+    Clima no dia {{ currentDay }}: <img class="weather-icon" src="{{ icons[weather] }}" alt="{{ weather }}" /> {{ weather }}
   </p>
 </div>
 
@@ -80,10 +80,13 @@
     margin-top: 0.5rem;
   }
 
-  .weather-desc .icon {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-  }
+  .weather-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
 
   .folder-grid {
     display: grid;
