@@ -7,7 +7,7 @@ function loadCSV(filename) {
   const records = parse(file, { columns: true });
   const result = {};
   for (const row of records) {
-    result[row.Name] = parseFloat(row.Value);
+    result[row.Name.trim()] = parseFloat(row.Value);
   }
   return result;
 }
