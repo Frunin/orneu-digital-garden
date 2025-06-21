@@ -19,10 +19,7 @@
 
 <!-- Weather Box -->
 <div class="weather-box">
-  <h2 class="weather-title">
-  <img class="location-icon" src="https://www.svgrepo.com/show/522167/location.svg" alt="Localização" />
-  Localização Atual: {{ currentLocation }}
-</h2>
+  <h2 class="weather-title"> Localização Atual: {{ currentLocation }}</h2>
   <p class="weather-desc">
     Clima no dia {{ currentDay }}: {{ weather }} <img class="weather-icon" src="{{ icons[weather] }}" alt="{{ weather }}" />
   </p>
@@ -68,22 +65,15 @@
     color: #f0f0f0;
     padding: 1rem;
     border-radius: 10px;
-    text-align: start;
+    text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     margin-bottom: 2rem;
-  }
-
-  .location-icon {
-  width: 2rem;
-  height: 2rem;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  display: inline-block;
   }
 
   .weather-title {
     margin: 0;
     font-size: 1.4rem;
+    text-align: center;
   }
 
   .weather-desc {
